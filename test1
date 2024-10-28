@@ -1,0 +1,8 @@
+import pandas as pd
+dates = pd.date_range('2020-01-01', '2020-01-03')
+df = pd.DataFrame(index=dates, columns=[])
+day = pd.offsets.Day()
+
+
+shifted_dates = df.shift(freq=day).index
+assert (shifted_dates == dates + day).all()
